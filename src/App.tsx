@@ -10,7 +10,7 @@ import { useLocalStorage } from './hooks/useLocalStorage'
 import { ReactComponent as Info } from './data/Info.svg'
 import { ReactComponent as Settings } from './data/Settings.svg'
 const words = require('./data/words').default as { [key: string]: boolean }
-
+const playT = 1
 const state = {
   playing: 'playing',
   won: 'won',
@@ -25,7 +25,7 @@ export const difficulty = {
 
 const getRandomAnswer = () => {
   const randomIndex = Math.floor(Math.random() * answers.length)
-  return answers[randomIndex].toUpperCase()
+  return answers[playT].toUpperCase()
 }
 
 type State = {
@@ -302,7 +302,7 @@ function App() {
     setLetterStatuses(initialStates.letterStatuses())
     setSubmittedInvalidWord(initialStates.submittedInvalidWord)
     setExactGuesses({})
-
+    playT +=1
     closeModal()
   }
 
